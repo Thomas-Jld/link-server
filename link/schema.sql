@@ -1,0 +1,16 @@
+DROP TABLE IF EXISTS board;
+DROP TABLE IF EXISTS board_group;
+
+CREATE TABLE board_group (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    level INTEGER DEFAULT 0,
+    name TEXT DEFAULT NULL,
+    description TEXT DEFAULT NULL
+);
+
+CREATE TABLE board (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    board_uid TEXT NOT NULL,
+    group_id INTEGER DEFAULT 0,
+    FOREIGN KEY (group_id) REFERENCES board_group(id)
+);
